@@ -990,7 +990,8 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    
+<!-- Gallery Section -->
 <section id="gallery" class="section gallery-section">
   <div class="container">
     <h2 class="section-title"><i class="fas fa-images"></i> Our Work Showcase</h2>
@@ -1000,9 +1001,11 @@
 
     <div class="gallery-carousel">
       <div class="gallery-track">
-        <img src="1.jpeg" alt="Image 1">
-        <img src="2.jpeg" alt="Image 2">
-        <img src="3.jpeg" alt="Image 3">
+        <img src="/Users/varikutinaveenreddy/Downloads/1.jpeg" alt="Project 1">
+        <img src="/Users/varikutinaveenreddy/Downloads/2.jpeg" alt="Project 2">
+        <img src="/Users/varikutinaveenreddy/Downloads/3.jpeg" alt="Project 3">
+
+                <img src="/Users/varikutinaveenreddy/Downloads/4.jpeg" alt="Project 4">
 
       </div>
       <button class="gallery-btn prev"><i class="fas fa-chevron-left"></i></button>
@@ -1010,6 +1013,104 @@
     </div>
   </div>
 </section>
+
+<style>
+/* Gallery Section */
+.gallery-section {
+  background: #f9fafb;
+  position: relative;
+}
+
+.gallery-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.gallery-track img {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 10px;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-track img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1e40af;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.gallery-btn:hover {
+  background: #1d4ed8;
+}
+
+.gallery-btn.prev { left: -20px; }
+.gallery-btn.next { right: -20px; }
+
+@media (max-width: 768px) {
+  .gallery-track img {
+    max-width: 220px;
+  }
+  .gallery-btn.prev { left: 5px; }
+  .gallery-btn.next { right: 5px; }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const track = document.querySelector('.gallery-track');
+  const prevBtn = document.querySelector('.gallery-btn.prev');
+  const nextBtn = document.querySelector('.gallery-btn.next');
+  let index = 0;
+
+  function updateCarousel() {
+    const slideWidth = track.querySelector('img').offsetWidth + 20;
+    track.style.transform = `translateX(${-index * slideWidth}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (index < track.children.length - 1) {
+      index++;
+      updateCarousel();
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      updateCarousel();
+    }
+  });
+
+  window.addEventListener('resize', updateCarousel);
+});
+</script>
+
 
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
